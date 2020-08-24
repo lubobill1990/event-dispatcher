@@ -46,14 +46,12 @@ final class ListenerCollection
      */
     public function add(callable $listener, string $eventClassName = ''): self
     {
-        $new = clone $this;
-
         if ($eventClassName === '') {
             $eventClassName = $this->getParameterType($listener);
         }
 
-        $new->listeners[$eventClassName][] = $listener;
-        return $new;
+        $this->listeners[$eventClassName][] = $listener;
+        return $this;
     }
 
     /**
